@@ -13,7 +13,7 @@
   "unpkg": "dist/easycredit-components/easycredit-components.esm.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/teambank/easycredit-webcomponents"
+    "url": "git+https://github.com/dubaro/easycredit-webcomponents"
   },
   "files": [
     "dist/",
@@ -29,7 +29,8 @@
     "storybook:build": "storybook build ./dist",
     "storybook:deploy": "bash -c \"source .env && rsync -rvz storybook-static/ $STORYBOOK_DEPLOY_DST\"",
     "storybook:deploy:clear-cache": "bash -c \"source .env && env && curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/708da8a58a29a3e65af33fa56a1bf7d9/purge_cache\" -H \"Authorization: Bearer $CF_BEARER\" -H \"Content-Type: application/json\" --data '{\"purge_everything\":true}\"",
-    "release": "yarn build && (cd dist; tar czvf ../easycredit-webcomponents-$(npm pkg get version | sed 's/\"//g').tar.gz .)"
+    "release": "yarn build && (cd dist; tar czvf ../easycredit-webcomponents-$(npm pkg get version | sed 's/\"//g').tar.gz .)",
+    "prepare": "yarn install && yarn build"
   },
   "dependencies": {
     "@babel/plugin-transform-optional-chaining": "^7.23.4",
